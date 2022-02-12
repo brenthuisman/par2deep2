@@ -3,7 +3,6 @@
 #include "gui.h"
 
 #include <QApplication>
-#include <QCommandLineParser>
 
 int main(int argc, char *argv[])
 {
@@ -11,7 +10,7 @@ int main(int argc, char *argv[])
     QApplication::setApplicationName(APPNAME);
     QApplication::setApplicationVersion(APPVER);
 
-    auto opts = configargparse(QCoreApplication::arguments());
+    auto opts = configargparse(argc, argv);
 
     par2deep2 p2d(opts);
     pgui w;
