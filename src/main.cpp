@@ -10,11 +10,7 @@ int main(int argc, char *argv[])
     QApplication::setApplicationName(APPNAME);
     QApplication::setApplicationVersion(APPVER);
 
-    auto opts = configargparse(argc, argv);
-
-    par2deep2 p2d(opts);
-    pgui w;
-	w.p2d = &p2d;
+    pgui w(argc,argv);
     w.show();
 
     return app.exec();

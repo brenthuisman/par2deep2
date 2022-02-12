@@ -7,7 +7,8 @@
 #include <vector>
 #include <popl.hpp>
 
-struct Opts {
+class Opts {
+public:
     std::string dirname;
     std::vector<std::string> excludes;
     std::vector<std::string> ext_exludes;
@@ -17,29 +18,20 @@ struct Opts {
     bool noverify;
     bool keep_orphan;
     bool clean_backup;
-};
 
-inline Opts configargparse(int argc, char *argv[])
-{
-    std::string lastdir; //uit main trekken
-    Opts opts;
-    popl::OptionParser op(std::string{APPNAME}+" options");
-    op.add<popl::Switch>("h", "help", "produce help message");
-//  op.add<popl::Value<std::string>>("s", "long", "description", "default value");
-    op.add<popl::Value<std::string>>("d", "directory", "Path to protect (default is current directory).", lastdir, &opts.dirname);
-
-    //unify ini and args
-    op.parse(argc, argv);
-    return opts;
+    Opts(int, char *[], std::string);
+    void update(std::string dirname);
+private:
+    popl::OptionParser op {std::string{APPNAME}+" options"};
 };
 
 class par2deep2
 {
 public:
-	par2deep2(Opts);
+	par2deep2(int, char *[], std::string);
 	~par2deep2() = default;
 
-	std::string test;
+    Opts opts;
 
 private:
 
