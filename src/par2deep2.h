@@ -10,12 +10,12 @@
 class Opts {
 public:
     std::string dirname;
-    std::vector<std::string> excludes;
-    std::vector<std::string> ext_exludes;
+    std::string excludes;
+    std::string ext_exludes;
     unsigned int percentage;
     bool quiet;
     bool overwrite;
-    bool noverify;
+    bool no_verify;
     bool keep_orphan;
     bool clean_backup;
 

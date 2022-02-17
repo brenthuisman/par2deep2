@@ -19,10 +19,11 @@ set(par2deep2_SRC
   src/par2deep2.cpp
 )
 
-# Tell CMake to create the helloworld executable
+# Tell CMake to create the executable
 add_executable(par2deep2 ${par2deep2_SRC})
+
+# Add submodules to header search path
 target_include_directories(par2deep2 PUBLIC ext/popl/include)
-##add_subdirectory(ext/popl/include)
 
 # Use the Widgets module from Qt 5.
 target_link_libraries(par2deep2 Qt5::Widgets)
